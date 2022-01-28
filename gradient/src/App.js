@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import BackgroundColor from "./components/BackgroundColor/BackgroundColor";
+import MenuSettings from "./components/MenuSettings/MenuSettings";
+import styled from "styled-components";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <MenuSettings></MenuSettings>
+      <BackgroundColor></BackgroundColor>
+    </Container>
   );
 }
+
+const Container = styled.div`
+  display: flex;
+  background: red;
+  justify-content: space-between;
+`;
 
 export default App;
