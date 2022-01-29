@@ -13,8 +13,7 @@ function App() {
 
 const Container = styled.div`
   display: flex;
-  background: red;
-  justify-content: space-between;
+  height:100vh;
 `;
 
 export default App;

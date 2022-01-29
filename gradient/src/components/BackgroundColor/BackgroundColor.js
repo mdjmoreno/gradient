@@ -1,27 +1,27 @@
-import React from "react"
-
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Card } from "reactstrap";
+import styled, { ThemeProvider } from "styled-components";
 
 const BackgroundColor = () => {
-  // const { colorSelection, speed, angle } = useContext(SettingsContext)
+  const color1 = useSelector((state) => state.colors.color1);
+  const color2 = useSelector((state) => state.colors.color2);
+  const deg = useSelector((state)=> state.colors.deg);
+  const theme = {
+    bg: "blue",
+  };
 
-  // const background =
-  //   "linear-gradient(" + angle + "deg, " + colorSelection.toString() + ")"
-
-  // const backgroundSize =
-  //   colorSelection.length * 60 + "%" + " " + colorSelection.length * 60 + "%"
-
-  // const animation =
-  //   "gradient-animation " +
-  //   colorSelection.length * (Math.abs(speed - 11) / 2) +
-  //   "s ease infinite"
+  const CardColors = styled(Card)`
+    background-color: ${(props) => (color1 ? color1 : props.theme.bg)};
+    background-image: linear-gradient(${deg}deg, ${color1} 0%, ${color2} 74%);
+    flex: 1;
+  `;
 
   return (
-    <div
-    >
-      mariana
-     
-    </div>
-  )
-}
+    <ThemeProvider theme={theme}>
+      <CardColors />
+    </ThemeProvider>
+  );
+};
 
-export default BackgroundColor
+export default BackgroundColor;

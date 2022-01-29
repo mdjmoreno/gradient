@@ -1,8 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import { Button, CardBody, Row, Col } from "reactstrap";
+import { useSelector, useDispatch } from "react-redux";
+import { setDeg } from "../../Slice/colorSlice";
+
 
 const Directions = () => {
+  const dispatch = useDispatch();
+  
   return (
     <ContainerDirections>
       <SubTitle>Direction</SubTitle>
@@ -14,7 +19,7 @@ const Directions = () => {
             </Button>
           </Col>
           <Col xs={4}>
-            <Button  size="lg"outline color="secondary" type="button">
+            <Button  size="lg"outline color="secondary" type="button" onClick={()=> dispatch(setDeg(0))}>
               2
             </Button>
           </Col>
