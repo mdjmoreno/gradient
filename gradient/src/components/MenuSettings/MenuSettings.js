@@ -1,21 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { Button } from "reactstrap";
 import Directions from "../Directions/Directions";
 import Colors from "../Colors/Colors";
 import OutputFormat from "../OutputFormat/OutputFormat";
+import { useColors } from "../../Slice/colorSlice";
 
 const MenuSettings = () => {
+  const { setRadial } = useColors();
   return (
     <MenuLeft>
       <Title>CSS GRADIENT GENERATOR</Title>
       <WraperStyle>
         <SubTitle>Style</SubTitle>
         <ButtonContainer>
-          <Button color="secondary" size="lg">
+          <Button color="secondary" size="lg" onClick={() => setRadial(false)}>
             Linear
           </Button>
-          <Button color="secondary" size="lg">
+          <Button color="secondary" size="lg" onClick={() => setRadial(true)}>
             Radial
           </Button>
         </ButtonContainer>
@@ -23,8 +26,8 @@ const MenuSettings = () => {
       <WraperDirections>
         <Directions />
       </WraperDirections>
-      <Colors/>
-      <OutputFormat/>
+      <Colors />
+      <OutputFormat />
     </MenuLeft>
   );
 };

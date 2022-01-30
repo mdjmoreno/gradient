@@ -1,64 +1,130 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { ThemeProvider } from "styled-components";
+import { useColors } from "../../Slice/colorSlice";
 import { Button, CardBody, Row, Col } from "reactstrap";
-import { useSelector, useDispatch } from "react-redux";
-import { setDeg } from "../../Slice/colorSlice";
 
+const Directions = (props) => {
+  const { radial, setDeg, setRadialPosition, radialPosition } = useColors();
 
-const Directions = () => {
-  const dispatch = useDispatch();
-  
+  const ButtonRadial = styled(Button)`
+    display: ${(props) => (props ? "block" : "none")};
+  `;
+
+  const theme = {
+    bg: "blue",
+  };
+
   return (
     <ContainerDirections>
       <SubTitle>Direction</SubTitle>
       <CardBody>
         <Row>
           <Col xs={4}>
-            <Button size="lg" outline color="secondary" type="button">
+            <Button
+              size="lg"
+              outline
+              color="secondary"
+              type="button"
+              onClick={() =>
+                radial ? setRadialPosition("top left") : setDeg(315)
+              }
+            >
               1
             </Button>
           </Col>
           <Col xs={4}>
-            <Button  size="lg"outline color="secondary" type="button" onClick={()=> dispatch(setDeg(0))}>
+            <Button
+              size="lg"
+              outline
+              color="secondary"
+              type="button"
+              onClick={() => setDeg(0)}
+            >
               2
             </Button>
           </Col>
           <Col xs={4}>
-            <Button size="lg" outline color="secondary" type="button">
+            <Button
+              size="lg"
+              outline
+              color="secondary"
+              type="button"
+              onClick={() => (radial ? setRadialPosition("top") : setDeg(45))}
+            >
               3
             </Button>
           </Col>
         </Row>
         <Row>
           <Col xs={4}>
-            <Button size="lg" outline color="secondary" type="button">
+            <Button
+              size="lg"
+              outline
+              color="secondary"
+              type="button"
+              onClick={() =>
+                radial ? setRadialPosition("top right") : setDeg(90)
+              }
+            >
               1
             </Button>
           </Col>
           <Col xs={4}>
-            <Button size="lg" outline color="secondary" type="button">
-              2
-            </Button>
+            {radial && (
+              <ButtonRadial
+                size="lg"
+                outline
+                color="secondary"
+                type="button"
+                onClick={() => setRadialPosition("center")}
+              >
+                5
+              </ButtonRadial>
+            )}
           </Col>
           <Col xs={4}>
-            <Button size="lg" outline color="secondary" type="button">
+            <Button
+              size="lg"
+              outline
+              color="secondary"
+              type="button"
+              onClick={() =>   radial ? setRadialPosition("botton right") :setDeg(135)}
+            >
               3
             </Button>
           </Col>
         </Row>
         <Row>
           <Col xs={4}>
-            <Button  size="lg" outline color="secondary" type="button">
+            <Button
+              size="lg"
+              outline
+              color="secondary"
+              type="button"
+              onClick={() =>  radial ? setRadialPosition("botton") :setDeg(180)}
+            >
               1
             </Button>
           </Col>
           <Col xs={4}>
-            <Button  size="lg" outline color="secondary" type="button">
+            <Button
+              size="lg"
+              outline
+              color="secondary"
+              type="button"
+              onClick={() =>  radial ? setRadialPosition("botton left") :setDeg(225)}
+            >
               2
             </Button>
           </Col>
           <Col xs={4}>
-            <Button size="lg"  outline color="secondary" type="button">
+            <Button
+              size="lg"
+              outline
+              color="secondary"
+              type="button"
+              onClick={() =>  radial ? setRadialPosition("left") :setDeg(270)}
+            >
               3
             </Button>
           </Col>

@@ -1,19 +1,18 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { setColors } from "../../Slice/colorSlice";
+import { useColors } from "../../Slice/colorSlice";
 import styled, { ThemeProvider } from "styled-components";
 import { Button, CardBody, Row, Col, Card } from "reactstrap";
 import { ColorPicker, useColor } from "react-color-palette";
 import "react-color-palette/lib/css/styles.css";
+import hexToRgba from "hex-to-rgba";
 
 const Colors = () => {
-  const color1 = useSelector((state) => state.colors.color1);
-  const color2 = useSelector((state) => state.colors.color2);
+  const { setColors, color1, color2, setRgbaColor1, setRgbaColor2 } =
+    useColors();
   const [pickerColor, setPickerColor] = useColor("hex", "#121212");
   const [openPickerA, setOpenPickerA] = useState(false);
   const [openPickerB, setOpenPickerB] = useState(false);
   const clickRef = useRef(null);
-  const dispatch = useDispatch();
 
   const theme = {
     bg: "blue",
@@ -23,7 +22,7 @@ const Colors = () => {
     const colors = [...Array(2)].map(() => {
       return `#` + Math.floor(Math.random() * 16777215).toString(16);
     });
-    dispatch(setColors(colors));
+    setColors(colors);
   };
 
   const CardColorA = styled.button`
@@ -39,7 +38,7 @@ const Colors = () => {
   `;
 
   useEffect(() => {
-    dispatch(setColors(pickerColor.hex));
+    setColors(pickerColor.hex);
   }, pickerColor.hex);
 
   useEffect(() => {
@@ -56,6 +55,15 @@ const Colors = () => {
       document.removeEventListener("mousedown", handler);
     };
   });
+
+  useEffect(() => {
+    if (color1 != null) {
+      setRgbaColor1(hexToRgba(color1));
+    }
+    if (color2 != null) {
+      setRgbaColor2(hexToRgba(color2));
+    }
+  }, [color1, color2]);
   return (
     <>
       <CardBody>Colors</CardBody>
