@@ -86,5 +86,6 @@ export const useColors = () => {
     setRadial,
     setRgbaColor2,
     setRgbaColor1,
+    setRadialPosition,
   };
 };

@@ -2,6 +2,8 @@ import React from "react";
 import styled, { ThemeProvider } from "styled-components";
 import { useColors } from "../../Slice/colorSlice";
 import { Button, CardBody, Row, Col } from "reactstrap";
+import {ArrowUpLeft, ArrowUp, ArrowUpRight, ArrowRight, ArrowDownRight, ArrowDown, ArrowDownLeft, ArrowLeft, ArrowRepeat } from '@styled-icons/bootstrap'
+
 
 const Directions = (props) => {
   const { radial, setDeg, setRadialPosition, radialPosition } = useColors();
@@ -29,7 +31,7 @@ const Directions = (props) => {
                 radial ? setRadialPosition("top left") : setDeg(315)
               }
             >
-              1
+            <ArrowUpLeft width={15}/>
             </Button>
           </Col>
           <Col xs={4}>
@@ -40,7 +42,7 @@ const Directions = (props) => {
               type="button"
               onClick={() => setDeg(0)}
             >
-              2
+              <ArrowUp width={15}/>
             </Button>
           </Col>
           <Col xs={4}>
@@ -51,7 +53,7 @@ const Directions = (props) => {
               type="button"
               onClick={() => (radial ? setRadialPosition("top") : setDeg(45))}
             >
-              3
+              <ArrowUpRight width={15}/>
             </Button>
           </Col>
         </Row>
@@ -66,7 +68,7 @@ const Directions = (props) => {
                 radial ? setRadialPosition("top right") : setDeg(90)
               }
             >
-              1
+              <ArrowLeft width={15}/>
             </Button>
           </Col>
           <Col xs={4}>
@@ -78,7 +80,7 @@ const Directions = (props) => {
                 type="button"
                 onClick={() => setRadialPosition("center")}
               >
-                5
+                <ArrowRepeat width={15}/>
               </ButtonRadial>
             )}
           </Col>
@@ -90,7 +92,7 @@ const Directions = (props) => {
               type="button"
               onClick={() =>   radial ? setRadialPosition("botton right") :setDeg(135)}
             >
-              3
+              <ArrowRight width={15}/>
             </Button>
           </Col>
         </Row>
@@ -103,7 +105,7 @@ const Directions = (props) => {
               type="button"
               onClick={() =>  radial ? setRadialPosition("botton") :setDeg(180)}
             >
-              1
+              <ArrowDownLeft width={15}/>
             </Button>
           </Col>
           <Col xs={4}>
@@ -114,7 +116,7 @@ const Directions = (props) => {
               type="button"
               onClick={() =>  radial ? setRadialPosition("botton left") :setDeg(225)}
             >
-              2
+              <ArrowDown width={15}/>
             </Button>
           </Col>
           <Col xs={4}>
@@ -125,7 +127,7 @@ const Directions = (props) => {
               type="button"
               onClick={() =>  radial ? setRadialPosition("left") :setDeg(270)}
             >
-              3
+              <ArrowDownRight width={15}/>
             </Button>
           </Col>
         </Row>
